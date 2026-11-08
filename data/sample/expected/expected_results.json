@@ -1,0 +1,41 @@
+{
+  "params": {
+    "seed": 42,
+    "customers": 50,
+    "orders": 500,
+    "skew_ratio": 0.6,
+    "order_files": 4
+  },
+  "customers": {
+    "input_rows": 55,
+    "valid_rows": 50,
+    "rejected_by_reason": {
+      "duplicate_customer_id": 1,
+      "missing_customer_id": 1,
+      "invalid_country": 1,
+      "invalid_segment": 1,
+      "malformed_updated_at": 1
+    }
+  },
+  "orders": {
+    "input_rows": 500,
+    "valid_rows": 477,
+    "rejected_by_reason": {
+      "duplicate_order_id": 5,
+      "missing_order_id": 2,
+      "missing_customer_id": 2,
+      "missing_amount": 2,
+      "malformed_amount": 2,
+      "negative_amount": 2,
+      "malformed_order_ts": 2,
+      "invalid_status": 2,
+      "invalid_customer_fk": 2,
+      "malformed_record": 2
+    },
+    "valid_total_amount": "50000118788.35",
+    "hot_customer_id": "C0000001",
+    "valid_orders_for_hot_customer": 287,
+    "valid_late_arriving_rows": 3,
+    "valid_boundary_amount_rows": 10
+  }
+}

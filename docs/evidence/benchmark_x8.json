@@ -1,0 +1,208 @@
+{
+  "environment": {
+    "spark_version": "3.5.9",
+    "master": "local[*]",
+    "cpu_count": 1,
+    "shuffle_partitions": 8,
+    "salt_buckets": 16
+  },
+  "data": {
+    "valid_orders": 4612800,
+    "valid_customers": 2000,
+    "scale_factor": 8
+  },
+  "protocol": {
+    "warmup_rounds": 1,
+    "measured_rounds": 3,
+    "sink": "noop",
+    "interleaved": true
+  },
+  "diagnosis": {
+    "verdict": "SKEWED: key C0000001 holds 60% of rows; one of 8 shuffle partitions receives 65% of all rows (5.19x the average).",
+    "key_distribution": {
+      "total_rows": 4612800,
+      "distinct_keys": 2000,
+      "mean_rows_per_key": 2306.4,
+      "top_keys": [
+        {
+          "key": "C0000001",
+          "rows": 2763640,
+          "share_of_rows": 0.5991
+        },
+        {
+          "key": "C0000161",
+          "rows": 1264,
+          "share_of_rows": 0.0003
+        },
+        {
+          "key": "C0000994",
+          "rows": 1208,
+          "share_of_rows": 0.0003
+        },
+        {
+          "key": "C0000652",
+          "rows": 1200,
+          "share_of_rows": 0.0003
+        },
+        {
+          "key": "C0001177",
+          "rows": 1200,
+          "share_of_rows": 0.0003
+        }
+      ],
+      "top_key_to_mean_ratio": 1198.2
+    },
+    "partitioning_before_salting": {
+      "partition_columns": [
+        "customer_id"
+      ],
+      "partitions": 8,
+      "rows_per_partition": [
+        235904,
+        224888,
+        208608,
+        2990872,
+        253456,
+        214944,
+        235408,
+        248720
+      ],
+      "max_rows": 2990872,
+      "median_rows": 235656.0,
+      "max_to_mean_ratio": 5.19,
+      "largest_partition_share": 0.6484
+    },
+    "partitioning_after_salting": {
+      "partition_columns": [
+        "customer_id",
+        "salt"
+      ],
+      "partitions": 8,
+      "rows_per_partition": [
+        400160,
+        582872,
+        752072,
+        741320,
+        230816,
+        921864,
+        577576,
+        406120
+      ],
+      "max_rows": 921864,
+      "median_rows": 580224.0,
+      "max_to_mean_ratio": 1.6,
+      "largest_partition_share": 0.1998,
+      "salt_buckets": 16
+    }
+  },
+  "results": {
+    "baseline": {
+      "wall_seconds_median": 7.336,
+      "wall_seconds_min": 6.344,
+      "wall_seconds_max": 9.638,
+      "wall_seconds_all": [
+        7.336,
+        6.344,
+        9.638
+      ],
+      "heaviest_stage": {
+        "stage_id": 53,
+        "tasks": 8,
+        "median_task_ms": 279.0,
+        "max_task_ms": 2595.0,
+        "max_to_median_ratio": 9.3
+      },
+      "correctness_vs_baseline": null,
+      "aqe_skew_split_applied": null,
+      "speedup_vs_baseline": 1.0
+    },
+    "broadcast": {
+      "wall_seconds_median": 3.344,
+      "wall_seconds_min": 3.341,
+      "wall_seconds_max": 3.35,
+      "wall_seconds_all": [
+        3.35,
+        3.344,
+        3.341
+      ],
+      "heaviest_stage": {
+        "stage_id": 74,
+        "tasks": 8,
+        "median_task_ms": 343.0,
+        "max_task_ms": 447.0,
+        "max_to_median_ratio": 1.3
+      },
+      "correctness_vs_baseline": {
+        "rows": 2000,
+        "baseline_rows": 2000,
+        "rows_only_in_mode": 0,
+        "rows_only_in_baseline": 0,
+        "schema_identical": true,
+        "sum_order_count_equal": true,
+        "sum_total_amount_equal": true,
+        "identical": true
+      },
+      "aqe_skew_split_applied": null,
+      "speedup_vs_baseline": 2.19
+    },
+    "salted": {
+      "wall_seconds_median": 8.805,
+      "wall_seconds_min": 8.071,
+      "wall_seconds_max": 9.095,
+      "wall_seconds_all": [
+        9.095,
+        8.071,
+        8.805
+      ],
+      "heaviest_stage": {
+        "stage_id": 97,
+        "tasks": 8,
+        "median_task_ms": 821.0,
+        "max_task_ms": 1140.0,
+        "max_to_median_ratio": 1.4
+      },
+      "correctness_vs_baseline": {
+        "rows": 2000,
+        "baseline_rows": 2000,
+        "rows_only_in_mode": 0,
+        "rows_only_in_baseline": 0,
+        "schema_identical": true,
+        "sum_order_count_equal": true,
+        "sum_total_amount_equal": true,
+        "identical": true
+      },
+      "aqe_skew_split_applied": null,
+      "speedup_vs_baseline": 0.83
+    },
+    "aqe": {
+      "wall_seconds_median": 6.949,
+      "wall_seconds_min": 5.584,
+      "wall_seconds_max": 7.516,
+      "wall_seconds_all": [
+        7.516,
+        6.949,
+        5.584
+      ],
+      "heaviest_stage": {
+        "stage_id": 84,
+        "tasks": 15,
+        "median_task_ms": 224.0,
+        "max_task_ms": 452.0,
+        "max_to_median_ratio": 2.0
+      },
+      "correctness_vs_baseline": {
+        "rows": 2000,
+        "baseline_rows": 2000,
+        "rows_only_in_mode": 0,
+        "rows_only_in_baseline": 0,
+        "schema_identical": true,
+        "sum_order_count_equal": true,
+        "sum_total_amount_equal": true,
+        "identical": true
+      },
+      "aqe_skew_split_applied": true,
+      "speedup_vs_baseline": 1.06
+    }
+  },
+  "batch_id": "b_ddf21169ef1f"
+}

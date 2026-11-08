@@ -1,0 +1,81 @@
+{
+  "run_id": "run_20261108T040853_382Z",
+  "batch_id": "b_249dd62140cc",
+  "attempt": 3,
+  "input_fingerprint": "249dd62140ccadbb7b1692192559d4b82c1c96fad8d2aa1895d3ef08e1677c06",
+  "mode": "broadcast",
+  "status": "SUCCESS",
+  "start_time": "2026-11-08T04:08:53Z",
+  "end_time": "2026-11-08T04:09:09Z",
+  "duration_seconds": 15.642,
+  "failure_reason": null,
+  "skipped_reason": null,
+  "previous_run_id": null,
+  "replaced_existing_load": false,
+  "config": {
+    "customers_path": "data/sample/input/customers",
+    "orders_path": "data/sample/input/orders",
+    "output_dir": "output/sample",
+    "run_id": null,
+    "batch_id": null,
+    "mode": "broadcast",
+    "salt_buckets": 16,
+    "force": false,
+    "simulate_failure_at": null,
+    "shuffle_partitions": 8,
+    "master": "local[*]"
+  },
+  "spark_version": "3.5.9",
+  "files": {
+    "customers": {
+      "files_read": [
+        "C:\\Users\\Admin\\Downloads\\skew_project_final\\skew_project\\data\\sample\\input\\customers\\customers.csv"
+      ],
+      "files_rejected": []
+    },
+    "orders": {
+      "files_read": [
+        "C:\\Users\\Admin\\Downloads\\skew_project_final\\skew_project\\data\\sample\\input\\orders\\orders_part_000.csv",
+        "C:\\Users\\Admin\\Downloads\\skew_project_final\\skew_project\\data\\sample\\input\\orders\\orders_part_001.csv",
+        "C:\\Users\\Admin\\Downloads\\skew_project_final\\skew_project\\data\\sample\\input\\orders\\orders_part_002.csv",
+        "C:\\Users\\Admin\\Downloads\\skew_project_final\\skew_project\\data\\sample\\input\\orders\\orders_part_003.csv"
+      ],
+      "files_rejected": []
+    }
+  },
+  "counts": {
+    "customers_input": 55,
+    "customers_valid": 50,
+    "customers_rejected": 5,
+    "orders_input": 500,
+    "orders_valid": 477,
+    "orders_rejected": 23,
+    "published_customers": 49,
+    "published_total_amount": "50000118788.35"
+  },
+  "rejected_by_reason": {
+    "customers": {
+      "duplicate_customer_id": 1,
+      "invalid_country": 1,
+      "invalid_segment": 1,
+      "malformed_updated_at": 1,
+      "missing_customer_id": 1
+    },
+    "orders": {
+      "duplicate_order_id": 5,
+      "invalid_customer_fk": 2,
+      "invalid_status": 2,
+      "malformed_amount": 2,
+      "malformed_order_ts": 2,
+      "malformed_record": 2,
+      "missing_amount": 2,
+      "missing_customer_id": 2,
+      "missing_order_id": 2,
+      "negative_amount": 2
+    }
+  },
+  "timings_seconds": {
+    "validate": 13.12,
+    "transform_and_publish": 1.571
+  }
+}

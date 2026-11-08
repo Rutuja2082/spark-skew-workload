@@ -1,0 +1,49 @@
+{
+  "run_id": "run_20261108T002750_325Z",
+  "batch_id": "b_249dd62140cc",
+  "attempt": 1,
+  "input_fingerprint": "249dd62140ccadbb7b1692192559d4b82c1c96fad8d2aa1895d3ef08e1677c06",
+  "mode": "broadcast",
+  "status": "FAILED",
+  "start_time": "2026-11-08T00:27:50Z",
+  "end_time": "2026-11-08T00:28:06Z",
+  "duration_seconds": 15.915,
+  "failure_reason": "Py4JJavaError: An error occurred while calling o282.parquet.\n: java.lang.UnsatisfiedLinkError: 'boolean org.apache.hadoop.io.nativeio.NativeIO$Windows.access0(java.lang.String, int)'\r\n\tat org.apache.hadoop.io.nativeio.NativeIO$Windows.access0(Native Method)\r\n\tat org.apache.hadoop.io.nativeio.NativeIO$Windows.access(NativeIO.java:793)\r\n\tat org.apache.hadoop.fs.FileUtil.canRead(FileUtil.java:1249)\r\n\tat org.apache.hadoop.fs.FileUtil.list(FileUtil.java:1454)\r\n\tat org.apache.hadoop.fs.RawLocalFileSystem.listStatus(RawLocalFileSystem.java:601)\r\n\tat org.apache.hadoop.fs.FileSystem.listStatus(FileSystem.java:1972)\r\n\tat org.apache.hadoop.fs.FileSystem.listStatus(FileSystem.java:2014)\r\n\tat org.apache.hadoop.fs.ChecksumFileSystem.listStatus(ChecksumFileSystem.java:761)\r\n\tat org.apache.hadoop.fs.FileSystem.listStatus(FileSystem.java:1972)\r\n\tat org.apache.hadoop.fs.FileSystem.listStatus(FileSystem.java:2014)\r\n\tat org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter.getAllCommittedTaskPaths(FileOutputCommitter.java:334)\r\n\tat org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter.commitJobInternal(FileOutputCommitter.java:404)\r\n\tat org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter.commitJob(FileOutputCommitter.java:377)\r\n\tat org.apache.parquet.hadoop.ParquetOutputCommitter.commitJob(ParquetOutputCommitter.java:48)\r\n\tat org.apache.spark.internal.io.HadoopMapReduceCommitProtocol.commitJob(HadoopMapReduceCommitProtocol.scala:192)\r\n\tat org.apache.spark.sql.execution.datasources.FileFormatWriter$.$anonfun$writeAndCommit$3(FileFormatWriter.scala:275)\r\n\tat scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)\r\n\tat org.apache.spark.util.Utils$.timeTakenMs(Utils.scala:552)\r\n\tat org.apache.spark.sql.execution.datasources.FileFormatWriter$.writeAndCommit(FileFormatWriter.scala:275)\r\n\tat org.apache.spark.sql.execution.datasources.FileFormatWriter$.executeWrite(FileFormatWriter.scala:304)\r\n\tat org.apache.spark.sql.execution.datasources.FileFormatWriter$.write(FileFormatWriter.scala:190)\r\n\tat org.apache.spark.sql.execution.datasources.InsertIntoHadoopFsRelationCommand.run(InsertIntoHadoopFsRelationCommand.scala:190)\r\n\tat org.apache.spark.sql.execution.command.DataWritingCommandExec.sideEffectResult$lzycompute(commands.scala:113)\r\n\tat org.apache.spark.sql.execution.command.DataWritingCommandExec.sideEffectResult(commands.scala:111)\r\n\tat org.apache.spark.sql.execution.command.DataWritingCommandExec.executeCollect(commands.scala:125)\r\n\tat org.apache.spark.sql.execution.adaptive.AdaptiveSparkPlanExec.$anonfun$executeCollect$1(AdaptiveSparkPlanExec.scala:392)\r\n\tat org.apache.spark.sql.execution.adaptive.AdaptiveSparkPlanExec.withFinalPlanUpdate(AdaptiveSparkPlanExec.scala:420)\r\n\tat org.apache.spark.sql.execution.adaptive.AdaptiveSparkPlanExec.executeCollect(AdaptiveSparkPlanExec.scala:392)\r\n\tat org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.$anonfun$applyOrElse$1(QueryExecution.scala:107)\r\n\tat org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$6(SQLExecution.scala:125)\r\n\tat org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.scala:201)\r\n\tat org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$1(SQLExecution.scala:108)\r\n\tat org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)\r\n\tat org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.scala:66)\r\n\tat org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.applyOrElse(QueryExecution.scala:107)\r\n\tat org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.applyOrElse(QueryExecution.scala:98)\r\n\tat org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$transformDownWithPruning$1(TreeNode.scala:461)\r\n\tat org.apache.spark.sql.catalyst.trees.CurrentOrigin$.withOrigin(origin.scala:76)\r\n\tat org.apache.spark.sql.catalyst.trees.TreeNode.transformDownWithPruning(TreeNode.scala:461)\r\n\tat org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.org$apache$spark$sql$catalyst$plans$logical$AnalysisHelper$$super$transformDownWithPruning(LogicalPlan.scala:32)\r\n\tat org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPruning(AnalysisHelper.scala:267)\r\n\tat org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPruning$(AnalysisHelper.scala:263)\r\n\tat org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning(LogicalPlan.scala:32)\r\n\tat org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning(LogicalPlan.scala:32)\r\n\tat org.apache.spark.sql.catalyst.trees.TreeNode.transformDown(TreeNode.scala:437)\r\n\tat org.apache.spark.sql.execution.QueryExecution.eagerlyExecuteCommands(QueryExecution.scala:98)\r\n\tat org.apache.spark.sql.execution.QueryExecution.commandExecuted$lzycompute(QueryExecution.scala:85)\r\n\tat org.apache.spark.sql.execution.QueryExecution.commandExecuted(QueryExecution.scala:83)\r\n\tat org.apache.spark.sql.execution.QueryExecution.assertCommandExecuted(QueryExecution.scala:142)\r\n\tat org.apache.spark.sql.DataFrameWriter.runCommand(DataFrameWriter.scala:869)\r\n\tat org.apache.spark.sql.DataFrameWriter.saveToV1Source(DataFrameWriter.scala:391)\r\n\tat org.apache.spark.sql.DataFrameWriter.saveInternal(DataFrameWriter.scala:364)\r\n\tat org.apache.spark.sql.DataFrameWriter.save(DataFrameWriter.scala:243)\r\n\tat org.apache.spark.sql.DataFrameWriter.parquet(DataFrameWriter.scala:802)\r\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\r\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)\r\n\tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\r\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:569)\r\n\tat py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)\r\n\tat py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)\r\n\tat py4j.Gateway.invoke(Gateway.java:282)\r\n\tat py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)\r\n\tat py4j.commands.CallCommand.execute(CallCommand.java:79)\r\n\tat py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)\r\n\tat py4j.ClientServerConnection.run(ClientServerConnection.java:106)\r\n\tat java.base/java.lang.Thread.run(Thread.java:840)\r\n",
+  "skipped_reason": null,
+  "previous_run_id": null,
+  "replaced_existing_load": false,
+  "config": {
+    "customers_path": "data/sample/input/customers",
+    "orders_path": "data/sample/input/orders",
+    "output_dir": "output/sample",
+    "run_id": null,
+    "batch_id": null,
+    "mode": "broadcast",
+    "salt_buckets": 16,
+    "force": false,
+    "simulate_failure_at": null,
+    "shuffle_partitions": 8,
+    "master": "local[*]"
+  },
+  "spark_version": "3.5.9",
+  "files": {
+    "customers": {
+      "files_read": [
+        "C:\\Users\\Admin\\Downloads\\skew_project_final\\skew_project\\data\\sample\\input\\customers\\customers.csv"
+      ],
+      "files_rejected": []
+    },
+    "orders": {
+      "files_read": [
+        "C:\\Users\\Admin\\Downloads\\skew_project_final\\skew_project\\data\\sample\\input\\orders\\orders_part_000.csv",
+        "C:\\Users\\Admin\\Downloads\\skew_project_final\\skew_project\\data\\sample\\input\\orders\\orders_part_001.csv",
+        "C:\\Users\\Admin\\Downloads\\skew_project_final\\skew_project\\data\\sample\\input\\orders\\orders_part_002.csv",
+        "C:\\Users\\Admin\\Downloads\\skew_project_final\\skew_project\\data\\sample\\input\\orders\\orders_part_003.csv"
+      ],
+      "files_rejected": []
+    }
+  },
+  "counts": {},
+  "rejected_by_reason": {},
+  "timings_seconds": {}
+}

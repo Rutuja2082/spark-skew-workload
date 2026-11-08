@@ -1,0 +1,2 @@
+2026-11-07 13:25:53,090 INFO run run_sample started: batch=b_249dd62140cc attempt=1 mode=broadcast
+2026-11-07 13:26:16,204 INFO run run_sample succeeded: {'customers_input': 55, 'customers_valid': 50, 'customers_rejected': 5, 'orders_input': 500, 'orders_valid': 477, 'orders_rejected': 23, 'published_customers': 49, 'published_total_amount': '50000118788.35'}

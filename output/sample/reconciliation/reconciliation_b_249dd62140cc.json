@@ -1,0 +1,240 @@
+{
+  "batch_id": "b_249dd62140cc",
+  "run_id": "run_20261108T040853_382Z",
+  "mode": "broadcast",
+  "expected_labels": "data\\sample\\expected\\expected_results.json",
+  "row_flow": {
+    "customers": {
+      "valid": 50,
+      "rejected": 5,
+      "rejected_dedup": 1,
+      "rejected_parse": 4,
+      "rejected_referential": 0,
+      "input": 55
+    },
+    "orders": {
+      "valid": 477,
+      "rejected": 23,
+      "rejected_dedup": 5,
+      "rejected_parse": 16,
+      "rejected_referential": 2,
+      "input": 500
+    }
+  },
+  "summary": {
+    "passed": 26,
+    "failed": 0,
+    "skipped": 0
+  },
+  "result": "PASS",
+  "checks": [
+    {
+      "id": "R1-customers",
+      "check": "customers: input rows = valid + rejected",
+      "status": "PASS",
+      "expected": "55",
+      "actual": "55",
+      "detail": "valid=50, rejected=5 (dedup=1, parse=4, referential=0)"
+    },
+    {
+      "id": "R1-orders",
+      "check": "orders: input rows = valid + rejected",
+      "status": "PASS",
+      "expected": "500",
+      "actual": "500",
+      "detail": "valid=477, rejected=23 (dedup=5, parse=16, referential=2)"
+    },
+    {
+      "id": "R0",
+      "check": "input files unchanged since the load",
+      "status": "PASS",
+      "expected": "249dd62140cc",
+      "actual": "249dd62140cc",
+      "detail": ""
+    },
+    {
+      "id": "K-customers",
+      "check": "customers: primary key customer_id unique",
+      "status": "PASS",
+      "expected": "50",
+      "actual": "50",
+      "detail": "0 duplicate key rows"
+    },
+    {
+      "id": "N-customers",
+      "check": "customers: no NULL in required columns",
+      "status": "PASS",
+      "expected": "0",
+      "actual": "0",
+      "detail": ""
+    },
+    {
+      "id": "K-orders",
+      "check": "orders: primary key order_id unique",
+      "status": "PASS",
+      "expected": "477",
+      "actual": "477",
+      "detail": "0 duplicate key rows"
+    },
+    {
+      "id": "N-orders",
+      "check": "orders: no NULL in required columns",
+      "status": "PASS",
+      "expected": "0",
+      "actual": "0",
+      "detail": ""
+    },
+    {
+      "id": "FK",
+      "check": "orders.customer_id exists in valid customers",
+      "status": "PASS",
+      "expected": "0",
+      "actual": "0",
+      "detail": ""
+    },
+    {
+      "id": "P1",
+      "check": "published summary equals independent SQL recomputation (two-way EXCEPT ALL)",
+      "status": "PASS",
+      "expected": "0 / 0",
+      "actual": "0 / 0",
+      "detail": "rows only in published / rows only in recomputation"
+    },
+    {
+      "id": "P2",
+      "check": "sum(order_count) = valid orders",
+      "status": "PASS",
+      "expected": "477",
+      "actual": "477",
+      "detail": ""
+    },
+    {
+      "id": "P3",
+      "check": "sum(total_amount) = sum(valid order amount) (exact decimal)",
+      "status": "PASS",
+      "expected": "50000118788.35",
+      "actual": "50000118788.35",
+      "detail": ""
+    },
+    {
+      "id": "T1",
+      "check": "every reject has source_file, raw_record and reason",
+      "status": "PASS",
+      "expected": "0",
+      "actual": "0",
+      "detail": ""
+    },
+    {
+      "id": "T2",
+      "check": "reject stages and reasons are in the documented vocabulary",
+      "status": "PASS",
+      "expected": "none unknown",
+      "actual": "stages_bad=0, unknown_reasons=[]",
+      "detail": ""
+    },
+    {
+      "id": "T3",
+      "check": "every reject points at a file that was read (compared by file name)",
+      "status": "PASS",
+      "expected": "none",
+      "actual": "none",
+      "detail": ""
+    },
+    {
+      "id": "T4-customers",
+      "check": "customers: every duplicate-rejected key has a surviving valid row",
+      "status": "PASS",
+      "expected": "0",
+      "actual": "0",
+      "detail": ""
+    },
+    {
+      "id": "T4-orders",
+      "check": "orders: every duplicate-rejected key has a surviving valid row",
+      "status": "PASS",
+      "expected": "0",
+      "actual": "0",
+      "detail": ""
+    },
+    {
+      "id": "L1",
+      "check": "run log counts equal the stored tables",
+      "status": "PASS",
+      "expected": "log == tables",
+      "actual": "equal",
+      "detail": "differences shown as (log, table)"
+    },
+    {
+      "id": "L2",
+      "check": "run log reject breakdown equals the rejects table",
+      "status": "PASS",
+      "expected": "{'customers': {'duplicate_customer_id': 1, 'invalid_country': 1, 'invalid_segment': 1, 'malformed_updated_at': 1, 'missing_customer_id': 1}, 'orders': {'duplicate_order_id': 5, 'invalid_customer_fk': 2, 'invalid_status': 2, 'malformed_amount': 2, 'malformed_order_ts': 2, 'malformed_record': 2, 'missing_amount': 2, 'missing_customer_id': 2, 'missing_order_id': 2, 'negative_amount': 2}}",
+      "actual": "{'customers': {'duplicate_customer_id': 1, 'invalid_country': 1, 'invalid_segment': 1, 'malformed_updated_at': 1, 'missing_customer_id': 1}, 'orders': {'duplicate_order_id': 5, 'invalid_customer_fk': 2, 'invalid_status': 2, 'malformed_amount': 2, 'malformed_order_ts': 2, 'malformed_record': 2, 'missing_amount': 2, 'missing_customer_id': 2, 'missing_order_id': 2, 'negative_amount': 2}}",
+      "detail": ""
+    },
+    {
+      "id": "E1-customers",
+      "check": "customers: valid rows equal expected label",
+      "status": "PASS",
+      "expected": "50",
+      "actual": "50",
+      "detail": ""
+    },
+    {
+      "id": "E2-customers",
+      "check": "customers: input rows equal expected label",
+      "status": "PASS",
+      "expected": "55",
+      "actual": "55",
+      "detail": ""
+    },
+    {
+      "id": "E3-customers",
+      "check": "customers: reject reasons equal expected label",
+      "status": "PASS",
+      "expected": "{'duplicate_customer_id': 1, 'invalid_country': 1, 'invalid_segment': 1, 'malformed_updated_at': 1, 'missing_customer_id': 1}",
+      "actual": "{'duplicate_customer_id': 1, 'invalid_country': 1, 'invalid_segment': 1, 'malformed_updated_at': 1, 'missing_customer_id': 1}",
+      "detail": ""
+    },
+    {
+      "id": "E1-orders",
+      "check": "orders: valid rows equal expected label",
+      "status": "PASS",
+      "expected": "477",
+      "actual": "477",
+      "detail": ""
+    },
+    {
+      "id": "E2-orders",
+      "check": "orders: input rows equal expected label",
+      "status": "PASS",
+      "expected": "500",
+      "actual": "500",
+      "detail": ""
+    },
+    {
+      "id": "E3-orders",
+      "check": "orders: reject reasons equal expected label",
+      "status": "PASS",
+      "expected": "{'duplicate_order_id': 5, 'invalid_customer_fk': 2, 'invalid_status': 2, 'malformed_amount': 2, 'malformed_order_ts': 2, 'malformed_record': 2, 'missing_amount': 2, 'missing_customer_id': 2, 'missing_order_id': 2, 'negative_amount': 2}",
+      "actual": "{'duplicate_order_id': 5, 'invalid_customer_fk': 2, 'invalid_status': 2, 'malformed_amount': 2, 'malformed_order_ts': 2, 'malformed_record': 2, 'missing_amount': 2, 'missing_customer_id': 2, 'missing_order_id': 2, 'negative_amount': 2}",
+      "detail": ""
+    },
+    {
+      "id": "E4",
+      "check": "valid total amount equals expected label",
+      "status": "PASS",
+      "expected": "50000118788.35",
+      "actual": "50000118788.35",
+      "detail": ""
+    },
+    {
+      "id": "E5",
+      "check": "hot customer C0000001 order count equals expected label",
+      "status": "PASS",
+      "expected": "287",
+      "actual": "287",
+      "detail": ""
+    }
+  ]
+}
